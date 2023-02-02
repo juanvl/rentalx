@@ -1,11 +1,12 @@
-import { Category } from "../model/Category";
+import { Category } from "../../model/Category";
+import { type ICategoriesRepository } from "../ICategoriesRepository";
 
 interface ICreateCategoryDTO {
   name: string;
   description: string;
 }
 
-class CategoriesRepository {
+class InMemoryCategoriesRepository implements ICategoriesRepository {
   #categories: Category[] = [];
 
   constructor() {
@@ -31,4 +32,4 @@ class CategoriesRepository {
   }
 }
 
-export { CategoriesRepository };
+export { InMemoryCategoriesRepository };
