@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { PostgresCategoriesRepository } from "../repositories/postgres/PostgresCategoriesRepository";
-import { CreateCategoryService } from "../services/CreateCategoryService";
+import { InMemoryCategoriesRepository } from "../modules/cars/repositories/in-memory/InMemoryCategoriesRepository";
+import { CreateCategoryService } from "../modules/cars/services/CreateCategoryService";
 
 const categoriesRoutes = Router();
-const categoriesRepository = new PostgresCategoriesRepository();
+const categoriesRepository = new InMemoryCategoriesRepository();
 
 categoriesRoutes.get("/", (req, res) => {
   const categories = categoriesRepository.list();
