@@ -9,8 +9,19 @@ interface ICreateCategoryDTO {
 class InMemoryCategoriesRepository implements ICategoriesRepository {
   #categories: Category[] = [];
 
-  constructor() {
+  static INSTANCE: InMemoryCategoriesRepository;
+
+  private constructor() {
     this.#categories = [];
+  }
+
+  static getInstance() {
+    if (!InMemoryCategoriesRepository.INSTANCE) {
+      InMemoryCategoriesRepository.INSTANCE =
+        new InMemoryCategoriesRepository();
+    }
+
+    return InMemoryCategoriesRepository.INSTANCE;
   }
 
   list() {
