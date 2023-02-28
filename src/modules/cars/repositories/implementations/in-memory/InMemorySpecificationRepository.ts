@@ -1,14 +1,25 @@
-import { Specification } from "../../model/Specification";
+import { Specification } from "../../../model/Specification";
 import {
   type ICreateSpecificationDTO,
   type ISpecificationRepository,
-} from "../ISpecificationRepository";
+} from "../../ISpecificationRepository";
 
 class InMemorySpecificationRepository implements ISpecificationRepository {
   #specifications: Specification[];
 
-  constructor() {
+  static #INSTANCE: InMemorySpecificationRepository;
+
+  private constructor() {
     this.#specifications = [];
+  }
+
+  static getInstance() {
+    if (!InMemorySpecificationRepository.#INSTANCE) {
+      InMemorySpecificationRepository.#INSTANCE =
+        new InMemorySpecificationRepository();
+    }
+
+    return InMemorySpecificationRepository.#INSTANCE;
   }
 
   create(data: ICreateSpecificationDTO) {

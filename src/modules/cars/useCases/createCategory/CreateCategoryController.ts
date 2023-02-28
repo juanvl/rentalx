@@ -13,11 +13,13 @@ class CreateCategoryController {
 
     try {
       this.#createUseCase.execute({ name, description });
+      return response.status(201).send();
     } catch (error) {
-      return response.status(400).json({ error });
+      if (error instanceof Error) {
+        return response.status(400).json({ error: error.message });
+      }
+      return response.status(500);
     }
-
-    return response.status(201).send();
   }
 }
 

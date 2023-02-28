@@ -1,5 +1,5 @@
-import { Category } from "../../model/Category";
-import { type ICategoriesRepository } from "../ICategoriesRepository";
+import { Category } from "../../../model/Category";
+import { type ICategoriesRepository } from "../../ICategoriesRepository";
 
 interface ICreateCategoryDTO {
   name: string;
@@ -7,21 +7,21 @@ interface ICreateCategoryDTO {
 }
 
 class InMemoryCategoriesRepository implements ICategoriesRepository {
-  #categories: Category[] = [];
+  #categories: Category[];
 
-  static INSTANCE: InMemoryCategoriesRepository;
+  static #INSTANCE: InMemoryCategoriesRepository;
 
   private constructor() {
     this.#categories = [];
   }
 
   static getInstance() {
-    if (!InMemoryCategoriesRepository.INSTANCE) {
-      InMemoryCategoriesRepository.INSTANCE =
+    if (!InMemoryCategoriesRepository.#INSTANCE) {
+      InMemoryCategoriesRepository.#INSTANCE =
         new InMemoryCategoriesRepository();
     }
 
-    return InMemoryCategoriesRepository.INSTANCE;
+    return InMemoryCategoriesRepository.#INSTANCE;
   }
 
   list() {
