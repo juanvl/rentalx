@@ -11,6 +11,10 @@ class ImportCategoryController {
   handle(req: Request, res: Response) {
     const {file} = req
 
+    if (!file) {
+      return res.status(400).send()
+    }
+
     this.#useCase.execute(file)
 
     return res.send()
