@@ -1,4 +1,4 @@
 {
     "typescript.tsdk": "node_modules/typescript/lib",
-    "eslint.runtime": "/home/juan/.nvm/versions/node/v18.13.0/bin/node"
+    "eslint.runtime": "/home/juan/.nvm/versions/node/v18.15.0/bin/node"
 }
