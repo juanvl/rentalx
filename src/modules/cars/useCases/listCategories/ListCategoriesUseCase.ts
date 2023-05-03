@@ -7,8 +7,8 @@ class ListCategoriesUseCase {
     this.#repo = repo;
   }
 
-  execute() {
-    const result = this.#repo.list();
+  async execute() {
+    const result = await this.#repo.list();
     return result;
   }
 }

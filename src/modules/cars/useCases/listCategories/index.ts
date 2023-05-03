@@ -1,8 +1,8 @@
-import { InMemoryCategoriesRepository } from "../../repositories/implementations/in-memory/InMemoryCategoriesRepository";
+import { PostgresCategoriesRepository } from "../../repositories/implementations/postgres/PostgresCategoriesRepository";
 import { ListCategoriesController } from "./ListCategoriesController";
 import { ListCategoriesUseCase } from "./ListCategoriesUseCase";
 
-const listCategoriesRepo = InMemoryCategoriesRepository.getInstance();
+const listCategoriesRepo = PostgresCategoriesRepository.getInstance();
 const listCategoriesUseCase = new ListCategoriesUseCase(listCategoriesRepo);
 
 const listCategoriesController = new ListCategoriesController(
